@@ -12,7 +12,9 @@ class AxSegmentedStack: UIView {
     fileprivate var buttonsArray = [UIButton]()
     fileprivate var selectedButton: UIButton?
     
-    var segmentTitles = [String]()
+    weak var delegate: AxSegmentedStackDelegate?
+    
+    var segmentTitles = [SegmentedStackProtocol]()
     
     var font: UIFont = UIFont.systemFont(ofSize: 14)
     
@@ -26,38 +28,40 @@ class AxSegmentedStack: UIView {
     var selectedTitleColor: UIColor = .red
     var selectedBackgroundColor: UIColor = .blue.withAlphaComponent(0.2)
     
-    // MARK: - Setup functions.
-    func setupSegments() {
-        setupButtonsArray(with: segmentTitles)
+    // MARK: - Setup methods.
+    func setupSegments(forSelected index: Int = 0) {
+        setupButtonsArray(with: segmentTitles, selecting: index)
         setupStackView()
     }
     
-    func setupButtonsArray(with titlesArray: [String]) {
-        let arrayLenght = titlesArray.count
+    private func setupButtonsArray(with itemsArray: [SegmentedStackProtocol], selecting selectedIndex: Int) {
+        let lastIndex = itemsArray.count - 1
         
-        for index in 0..<arrayLenght {
-            let currentTitle = titlesArray[index]
+        for index in 0...lastIndex {
+            let currentTitle = itemsArray[index].title
             let segmentItem = UIButton(frame: CGRect.zero)
             segmentItem.addTarget(self, action: #selector(self.buttonWasClicked), for: .touchUpInside)
             
-            if index == 0 {
+            if index == selectedIndex || (selectedIndex > lastIndex && index == 0) {
                 setupAppearance(for: segmentItem, named: currentTitle, .Selected)
+            } else {
+                setupAppearance(for: segmentItem, named: currentTitle, .NotSelected)
+            }
+            
+            if index == 0 {
                 segmentItem.layer.cornerRadius = self.frame.height / 2
                 segmentItem.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
-                buttonsArray.append(segmentItem)
-                continue
             }
-            else if index == arrayLenght - 1 {
+            else if index == lastIndex {
                 segmentItem.layer.cornerRadius = self.frame.height / 2
                 segmentItem.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]
             }
             
-            setupAppearance(for: segmentItem, named: currentTitle, .NotSelected)
             buttonsArray.append(segmentItem)
         }
     }
     
-    func setupAppearance(for button: UIButton, named buttonTitle: String, _ selectionState: SelectionState) {
+    private func setupAppearance(for button: UIButton, named buttonTitle: String, _ selectionState: SelectionState) {
         
         button.setTitle(buttonTitle, for: .normal)
         button.setTitleColor(defaultTitleColor, for: .normal)
@@ -80,7 +84,7 @@ class AxSegmentedStack: UIView {
         }
     }
     
-    func setupStackView() {
+    private func setupStackView() {
         let stackView = UIStackView(arrangedSubviews: buttonsArray)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.alignment = .fill
@@ -108,8 +112,11 @@ class AxSegmentedStack: UIView {
                 break
             }
         }
-        
         sender.isSelected = true
         sender.layer.borderColor = selectedBorderColor.cgColor
+        
+        guard let senderIndex = buttonsArray.firstIndex(of: sender) else { return }
+        let segmentedProtocol = segmentTitles[senderIndex]
+        delegate?.didSelect(segmentedProtocol)
     }
 }

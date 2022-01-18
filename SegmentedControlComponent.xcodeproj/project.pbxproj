@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7193A61A27961DCD00B0C8B1 /* AxSegmentedStackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193A61927961DCD00B0C8B1 /* AxSegmentedStackDelegate.swift */; };
+		7193A61C27970A8E00B0C8B1 /* SegmentedStackProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193A61B27970A8E00B0C8B1 /* SegmentedStackProtocol.swift */; };
+		7193A61F27970C9E00B0C8B1 /* ProductionSegmentedStackProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193A61E27970C9E00B0C8B1 /* ProductionSegmentedStackProtocol.swift */; };
+		7193A62127970CAD00B0C8B1 /* HomologationSegmentedStackProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193A62027970CAD00B0C8B1 /* HomologationSegmentedStackProtocol.swift */; };
 		71F0DFE827724FB10056F8D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F0DFE727724FB10056F8D0 /* AppDelegate.swift */; };
 		71F0DFEA27724FB10056F8D0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F0DFE927724FB10056F8D0 /* SceneDelegate.swift */; };
 		71F0DFEC27724FB10056F8D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F0DFEB27724FB10056F8D0 /* ViewController.swift */; };
@@ -19,6 +23,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7193A61927961DCD00B0C8B1 /* AxSegmentedStackDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AxSegmentedStackDelegate.swift; sourceTree = "<group>"; };
+		7193A61B27970A8E00B0C8B1 /* SegmentedStackProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedStackProtocol.swift; sourceTree = "<group>"; };
+		7193A61E27970C9E00B0C8B1 /* ProductionSegmentedStackProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductionSegmentedStackProtocol.swift; sourceTree = "<group>"; };
+		7193A62027970CAD00B0C8B1 /* HomologationSegmentedStackProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomologationSegmentedStackProtocol.swift; sourceTree = "<group>"; };
 		71F0DFE427724FB10056F8D0 /* SegmentedControlComponent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SegmentedControlComponent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71F0DFE727724FB10056F8D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71F0DFE927724FB10056F8D0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +51,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7193A61827961DA700B0C8B1 /* protocol */ = {
+			isa = PBXGroup;
+			children = (
+				7193A61927961DCD00B0C8B1 /* AxSegmentedStackDelegate.swift */,
+				7193A61B27970A8E00B0C8B1 /* SegmentedStackProtocol.swift */,
+			);
+			path = protocol;
+			sourceTree = "<group>";
+		};
+		7193A61D27970C8400B0C8B1 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				7193A61E27970C9E00B0C8B1 /* ProductionSegmentedStackProtocol.swift */,
+				7193A62027970CAD00B0C8B1 /* HomologationSegmentedStackProtocol.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		71F0DFDB27724FB10056F8D0 = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +103,8 @@
 		71F0DFFB27724FE70056F8D0 /* AxSegmentedStack */ = {
 			isa = PBXGroup;
 			children = (
+				7193A61D27970C8400B0C8B1 /* model */,
+				7193A61827961DA700B0C8B1 /* protocol */,
 				71F0DFFC277250050056F8D0 /* AxSegmentedStack.swift */,
 				71F0DFFE277270210056F8D0 /* UIImageExtension.swift */,
 				71F0E0002772720C0056F8D0 /* SelectionState.swift */,
@@ -156,9 +184,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				71F0E0012772720C0056F8D0 /* SelectionState.swift in Sources */,
+				7193A61A27961DCD00B0C8B1 /* AxSegmentedStackDelegate.swift in Sources */,
 				71F0DFFD277250050056F8D0 /* AxSegmentedStack.swift in Sources */,
+				7193A61F27970C9E00B0C8B1 /* ProductionSegmentedStackProtocol.swift in Sources */,
+				7193A61C27970A8E00B0C8B1 /* SegmentedStackProtocol.swift in Sources */,
 				71F0DFEC27724FB10056F8D0 /* ViewController.swift in Sources */,
 				71F0DFE827724FB10056F8D0 /* AppDelegate.swift in Sources */,
+				7193A62127970CAD00B0C8B1 /* HomologationSegmentedStackProtocol.swift in Sources */,
 				71F0DFFF277270210056F8D0 /* UIImageExtension.swift in Sources */,
 				71F0DFEA27724FB10056F8D0 /* SceneDelegate.swift in Sources */,
 			);

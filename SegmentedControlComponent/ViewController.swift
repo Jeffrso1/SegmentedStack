@@ -12,15 +12,25 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
+        segmentedComponent.delegate = self
         setupSegmentedComponent()
     }
     
     func setupSegmentedComponent() {
-        segmentedComponent.segmentTitles = ["Produção", "Homologação", "Teste", "Outro Teste"]
-        segmentedComponent.setupSegments()
+        segmentedComponent.segmentTitles = [
+            ProductionSegmentedStackProtocol(named: "Produção"),
+            HomologationSegmentedStackProtocol(named: "Homologação")
+        ]
+        
+        segmentedComponent.setupSegments(forSelected: 4)
     }
-    
 }
 
+// MARK: - AxSegmentedStackDelegate
+extension ViewController: AxSegmentedStackDelegate {
+    
+    func didSelect(_ item: SegmentedStackProtocol) {
+        print("\nYou chose the segment named: \(item.title)\n")
+    }
+
+}
