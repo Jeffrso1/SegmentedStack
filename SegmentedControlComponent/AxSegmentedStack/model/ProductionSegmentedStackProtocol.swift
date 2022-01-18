@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ProductionSegmentedStackProtocol: SegmentedStackProtocol {
+class ProductionSegmentedStackProtocol: AxSegmentedViewDataProtocol {
     
     var title: String
     

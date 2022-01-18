@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol SegmentedStackProtocol {
+protocol AxSegmentedViewDataProtocol {
     
     var title: String { get set }
     

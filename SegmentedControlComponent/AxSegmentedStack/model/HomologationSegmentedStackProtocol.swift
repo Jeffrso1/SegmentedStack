@@ -7,7 +7,7 @@
 
 import Foundation
 
-class HomologationSegmentedStackProtocol: SegmentedStackProtocol {
+class HomologationSegmentedStackProtocol: AxSegmentedViewDataProtocol {
     
     var title: String
     

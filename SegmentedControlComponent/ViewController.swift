@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    @IBOutlet weak var segmentedComponent: AxSegmentedStack!
+    @IBOutlet weak var segmentedComponent: AxSegmentedView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,19 +17,18 @@ class ViewController: UIViewController {
     }
     
     func setupSegmentedComponent() {
-        segmentedComponent.segmentTitles = [
+        
+        segmentedComponent.set(segmentedItems: [
             ProductionSegmentedStackProtocol(named: "Produção"),
             HomologationSegmentedStackProtocol(named: "Homologação")
-        ]
-        
-        segmentedComponent.setupSegments(forSelected: 4)
+        ], forSelected: 1)
     }
 }
 
 // MARK: - AxSegmentedStackDelegate
-extension ViewController: AxSegmentedStackDelegate {
+extension ViewController: AxSegmentedViewDelegate {
     
-    func didSelect(_ item: SegmentedStackProtocol) {
+    func didSelect(_ item: AxSegmentedViewDataProtocol) {
         print("\nYou chose the segment named: \(item.title)\n")
     }
 
